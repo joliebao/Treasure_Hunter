@@ -11,7 +11,6 @@ public class Hunter
     private String hunterName;
     private String kit;
     private int gold;
-    private boolean gameEnd;
 
     //Constructor
     /**
@@ -24,7 +23,6 @@ public class Hunter
         this.hunterName = hunterName;
         kit = "";
         gold = startingGold;
-        gameEnd = false;
     }
 
     //Accessors
@@ -46,18 +44,10 @@ public class Hunter
     public void changeGold(int modifier)
     {
         gold += modifier;
-        if (gold < 0)
+        if (gold <= 0)
         {
             gold = 0;
         }
-
-        if (gold == 0){
-            gameEnd = true;
-        }
-    }
-
-    private boolean getEnd(){
-        return gameEnd;
     }
 
     /**

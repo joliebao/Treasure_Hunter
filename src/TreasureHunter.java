@@ -29,8 +29,11 @@ public class TreasureHunter
     public void play ()
     {
         welcomePlayer();
-        enterTown();
-        showMenu();
+        while (hunter.getGold() != 0) {
+            enterTown();
+            showMenu();
+        }
+
     }
 
     /**
