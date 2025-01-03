@@ -2,39 +2,56 @@ public class Treasure {
     private boolean treasure1;
     private boolean treasure2;
     private boolean treasure3;
-    private int treasureChance;
     private int counter;
     private String currentTreasure;
+    private double treasureChance;
 
-    public Treasure(){
+    public Treasure(){ // constructor method that sets all variables to their starting values.
         treasure1 =false;
         treasure1 =false;
         treasure1 =false;
-        treasureChance =((int) Math.random()*100)+1;
         counter = 0;
+        treasureChance=Math.random();
     }
 
-    public void generateTreasure(){
-        double treasureSeed = Math.random();
+    public void generateTreasure(){ // generates either one of four options, treasures 1-3 or nothing.
+        double treasureSeed = treasureChance;
 
-        if (treasureSeed<.33){
-                currentTreasure = "Sapphire treasure";
+        if (treasureSeed<.25){
+                currentTreasure = "Sapphire Ring";
             }
-        if ((treasureSeed>.33) && treasureSeed<.66){
-                currentTreasure = "Jade treasure";
+        if ((treasureSeed>=.25) && treasureSeed<.50){
+                currentTreasure = "Jade Necklace";
             }
-        if (treasureSeed>.66){
-                currentTreasure = "Diamond treasure";
+        if ((treasureSeed>=.50)&&(treasureSeed<.75)){
+                currentTreasure = "Crystal Skull";
             }
-
+        if (treasureSeed>=.75){
+            currentTreasure = "Nothing";
         }
+
+    }
 
     public boolean searchTreasure(){
-        if (treasureChance>50){
-            return true;
-        }else {
+        double treasureSeed = treasureChance;
+
+        if (treasureSeed<.25){
+            treasure1=true;
+
+        }
+        if ((treasureSeed>=.25) && treasureSeed<.50){
+            treasure2 = true;
+        }
+        if ((treasureSeed>=.50)&&(treasureSeed<.75)){
+            treasure3 = true;
+        }
+
+        if (treasureSeed>=.75){
             return false;
         }
+
+        return false;
+
     }
 
 
