@@ -118,7 +118,7 @@ public class TreasureHunter
         Scanner scanner = new Scanner(System.in);
         String choice = "";
 
-        while (!(choice.equals("X") || choice.equals("x") || hunter.getGold() == 0))
+        while (!(choice.equals("X") || choice.equals("x") || hunter.getGold() == 0) || !Treasure.hasAllThreeTreasures())
         {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
@@ -176,6 +176,35 @@ public class TreasureHunter
         }else if(choice.equals("H")|| choice.equals("h")){
             System.out.println("You hunted for treasure and found....");
             System.out.println(currentTreasure);
+
+            if (!currentTreasure.equals("Nothing")){
+                if (currentTreasure.equals("Sapphire Ring")){
+                    currentTreasure.gotTreasure1();
+                }
+                if (currentTreasure.equals("Jade Necklace")){
+                    currentTreasure.gotTreasure2();
+                }
+                if (currentTreasure.equals("Crystal Skull")){
+                    currentTreasure.gotTreasure3();
+                }
+            }
+
+            if (Treasure.isTreasure1() && currentTreasure.equals("Sapphire Ring") ){
+                System.out.println("You already got a sapphire ring, so you gave it away to a beggar...");
+            }
+
+            if (Treasure.isTreasure2() && currentTreasure.equals("Jade Necklace" )){
+                System.out.println("You already got a Jade Necklace, so you sent it to your mother as a gift...");
+            }
+
+            if (Treasure.isTreasure3() && currentTreasure.equals("Crystal Skull") ){
+                System.out.println("You already got a Crystal Skull, so you donated it to a museum...");
+            }
+
+            if (currentTreasure.hasAllThreeTreasures()){
+                System.out.println("You got all the treasures!" );
+                System.out.println("Congratulations, you're rich now!");
+            }
         }
         else
         {

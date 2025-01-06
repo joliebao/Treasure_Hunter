@@ -1,7 +1,7 @@
 public class Treasure {
-    private boolean treasure1;
-    private boolean treasure2;
-    private boolean treasure3;
+    private static boolean treasure1;
+    private static boolean treasure2;
+    private static boolean treasure3;
     private int counter;
     private String currentTreasure;
     private double treasureChance;
@@ -37,14 +37,26 @@ public class Treasure {
     }
 
     public void gotTreasure2() {
-        this.treasure2 = treasure2;
+        this.treasure2 = true;
     }
 
     public void gotTreasure3() {
-        this.treasure3 = treasure3;
+        this.treasure3 = true;
     }
 
-    public boolean hasAllThreeTreasures(){
+    public static boolean isTreasure1() {
+        return treasure1;
+    }
+
+    public static boolean isTreasure2() {
+        return treasure2;
+    }
+
+    public static boolean isTreasure3() {
+        return treasure3;
+    }
+
+    public static boolean hasAllThreeTreasures(){
         if (treasure1 && treasure2 && treasure3){
             return true;
         }
