@@ -210,8 +210,9 @@ public class TreasureHunter
                     System.out.println("Congratulations, you're rich now!");
                 }
             }else {
-                System.out.println("You already hunted here, try another town");
+                System.out.println("You already hunted here, try another town!");
             }
+            currentTown.setHasHunted();
         }
         else
         {
