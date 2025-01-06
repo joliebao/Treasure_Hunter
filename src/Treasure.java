@@ -32,28 +32,28 @@ public class Treasure {
 
     }
 
-    public boolean searchTreasure(){
-        double treasureSeed = treasureChance;
-
-        if (treasureSeed<.25){
-            treasure1=true;
-
-        }
-        if ((treasureSeed>=.25) && treasureSeed<.50){
-            treasure2 = true;
-        }
-        if ((treasureSeed>=.50)&&(treasureSeed<.75)){
-            treasure3 = true;
-        }
-
-        if (treasureSeed>=.75){
-            return false;
-        }
-
-        return false;
-
+    public void gotTreasure1() {
+        this.treasure1 = true;
     }
 
+    public void gotTreasure2() {
+        this.treasure2 = treasure2;
+    }
 
+    public void gotTreasure3() {
+        this.treasure3 = treasure3;
+    }
+
+    public boolean hasAllThreeTreasures(){
+        if (treasure1 && treasure2 && treasure3){
+            return true;
+        }
+        return false;
+    }
+
+    public String toString(){
+        return currentTreasure;
+
+    }
 
 }
