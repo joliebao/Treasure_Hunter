@@ -10,6 +10,7 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private boolean hasHunted;
 
     //Constructor
     /**
@@ -30,7 +31,17 @@ public class Town
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
+        hasHunted = false;
     }
+
+    public void setHasHunted(){
+        hasHunted =true;
+    }
+
+    public boolean getHasHunted(){
+        return hasHunted;
+    }
+
 
     public String getLatestNews()
     {

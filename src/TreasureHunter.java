@@ -71,22 +71,24 @@ public class TreasureHunter
         Treasure treasure = new Treasure();
         double markdown = 0.25;
         double toughness = 0.4;
-        if (hardMode)
-        {
+        if (hardMode) {
             // in hard mode, you get less money back when you sell items
             markdown = 0.5;
+
 
             // and the town is "tougher"
             toughness = 0.75;
         }
-        if (easyMode)
-        {
-            // in easy mode, you get more money back when you sell items
+        else if (easyMode) {
             markdown = 0.1;
-
-            // town is less "tough"
             toughness = 0.25;
         }
+        else {
+            markdown = 0.3;
+            toughness = 0.5;
+        }
+
+
 
         currentTreasure = new Treasure();
         currentTreasure.generateTreasure();
@@ -125,6 +127,7 @@ public class TreasureHunter
             System.out.println("***");
             System.out.println(hunter);
             System.out.println(currentTown);
+            System.out.println(currentTreasure);
             System.out.println("(B)uy something at the shop.");
             System.out.println("(S)ell something at the shop.");
             System.out.println("(M)ove on to a different town.");
@@ -174,36 +177,40 @@ public class TreasureHunter
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
 
         }else if(choice.equals("H")|| choice.equals("h")){
-            System.out.println("You hunted for treasure and found....");
-            System.out.println(currentTreasure);
+            if (!currentTown.getHasHunted()) {
+                System.out.println("You hunted for treasure and found....");
+                System.out.println(currentTreasure);
 
-            if (!currentTreasure.equals("Nothing")){
-                if (currentTreasure.equals("Sapphire Ring")){
-                    currentTreasure.gotTreasure1();
+                if (!currentTreasure.equals("Nothing")) {
+                    if (currentTreasure.equals("Sapphire Ring")) {
+                        currentTreasure.gotTreasure1();
+                    }
+                    if (currentTreasure.equals("Jade Necklace")) {
+                        currentTreasure.gotTreasure2();
+                    }
+                    if (currentTreasure.equals("Crystal Skull")) {
+                        currentTreasure.gotTreasure3();
+                    }
                 }
-                if (currentTreasure.equals("Jade Necklace")){
-                    currentTreasure.gotTreasure2();
+
+                if (Treasure.isTreasure1() && currentTreasure.equals("Sapphire Ring")) {
+                    System.out.println("You already got a sapphire ring, so you gave it away to a beggar...");
                 }
-                if (currentTreasure.equals("Crystal Skull")){
-                    currentTreasure.gotTreasure3();
+
+                if (Treasure.isTreasure2() && currentTreasure.equals("Jade Necklace")) {
+                    System.out.println("You already got a Jade Necklace, so you sent it to your mother as a gift...");
                 }
-            }
 
-            if (Treasure.isTreasure1() && currentTreasure.equals("Sapphire Ring") ){
-                System.out.println("You already got a sapphire ring, so you gave it away to a beggar...");
-            }
+                if (Treasure.isTreasure3() && currentTreasure.equals("Crystal Skull")) {
+                    System.out.println("You already got a Crystal Skull, so you donated it to a museum...");
+                }
 
-            if (Treasure.isTreasure2() && currentTreasure.equals("Jade Necklace" )){
-                System.out.println("You already got a Jade Necklace, so you sent it to your mother as a gift...");
-            }
-
-            if (Treasure.isTreasure3() && currentTreasure.equals("Crystal Skull") ){
-                System.out.println("You already got a Crystal Skull, so you donated it to a museum...");
-            }
-
-            if (currentTreasure.hasAllThreeTreasures()){
-                System.out.println("You got all the treasures!" );
-                System.out.println("Congratulations, you're rich now!");
+                if (currentTreasure.hasAllThreeTreasures()) {
+                    System.out.println("You got all the treasures!");
+                    System.out.println("Congratulations, you're rich now!");
+                }
+            }else {
+                System.out.println("You already hunted here, try another town");
             }
         }
         else
