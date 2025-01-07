@@ -32,6 +32,10 @@ public class Treasure {
 
     }
 
+    public String getCurrentTreasure() {
+        return currentTreasure;
+    }
+
     public void gotTreasure1() {
         this.treasure1 = true;
     }
