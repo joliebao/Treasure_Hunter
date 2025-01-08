@@ -6,13 +6,12 @@ public class Treasure {
     private String currentTreasure;
     private double treasureChance;
     private TreasureHunter game;
-
     public Treasure(){ // constructor method that sets all variables to their starting values.
-        treasure1 = false;
-        treasure2 = false;
-        treasure3 = false;
+        treasure1 =false;
+        treasure2 =false;
+        treasure3 =false;
         counter = 0;
-        treasureChance = Math.random();
+        treasureChance=Math.random();
 
         if (game.isCheatMode() == true){
             treasureChance = 0;
