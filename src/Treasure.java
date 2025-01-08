@@ -5,13 +5,18 @@ public class Treasure {
     private int counter;
     private String currentTreasure;
     private double treasureChance;
+    private TreasureHunter game;
 
     public Treasure(){ // constructor method that sets all variables to their starting values.
-        treasure1 =false;
-        treasure1 =false;
-        treasure1 =false;
+        treasure1 = false;
+        treasure2 = false;
+        treasure3 = false;
         counter = 0;
-        treasureChance=Math.random();
+        treasureChance = Math.random();
+
+        if (game.isCheatMode() == true){
+            treasureChance = 0;
+        }
     }
 
     public void generateTreasure(){ // generates either one of four options, treasures 1-3 or nothing.

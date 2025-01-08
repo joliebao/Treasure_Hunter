@@ -23,6 +23,7 @@ public class TreasureHunter
     public TreasureHunter()
     {
         // these will be initialized in the play method
+        currentTreasure = new Treasure();
         currentTown = null;
         hunter = null;
         hardMode = false;
@@ -58,8 +59,10 @@ public class TreasureHunter
         difficulty = difficulty.toUpperCase();
 
         if (difficulty.equals("H")) {
+            System.out.println("\nHard mode is on...");
             hardMode = true;
         } else if (difficulty.equals("E")) {
+            System.out.println("\nEasy mode is on");
             easyMode = true;
         } else if (difficulty.equals("CH347M0D3")){
             System.out.println("\nCheat mode is on! - - -- - ");
@@ -98,9 +101,6 @@ public class TreasureHunter
             toughness = 0.5;
         }
 
-
-
-        currentTreasure = new Treasure();
         currentTreasure.generateTreasure();
 
         // note that we don't need to access the Shop object
