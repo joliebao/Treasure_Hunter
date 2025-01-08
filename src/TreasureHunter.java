@@ -13,6 +13,7 @@ public class TreasureHunter
     private Hunter hunter;
     private boolean hardMode;
     private boolean easyMode;
+    private static boolean cheatMode;
     private Treasure currentTreasure;
 
     //Constructor
@@ -26,6 +27,7 @@ public class TreasureHunter
         hunter = null;
         hardMode = false;
         easyMode = false;
+        cheatMode = false;
     }
 
     // starts the game; this is the only public method
@@ -53,14 +55,20 @@ public class TreasureHunter
 
         System.out.print("Hard mode? Normal mode? Easy mode? (h/n/e): ");
         String difficulty = scanner.nextLine();
-        difficulty = difficulty.toLowerCase();
-        if (difficulty.equals("h"))
-        {
+        difficulty = difficulty.toUpperCase();
+
+        if (difficulty.equals("H")) {
             hardMode = true;
-        } else if (difficulty.equals("e"))
-        {
+        } else if (difficulty.equals("E")) {
             easyMode = true;
+        } else if (difficulty.equals("CH347M0D3")){
+            System.out.println("\nCheat mode is on! - - -- - ");
+            cheatMode = true;
         }
+    }
+
+    public static boolean isCheatMode() {
+        return cheatMode;
     }
 
     /**
@@ -74,14 +82,16 @@ public class TreasureHunter
         if (hardMode) {
             // in hard mode, you get less money back when you sell items
             markdown = 0.5;
-
-
             // and the town is "tougher"
             toughness = 0.75;
         }
         else if (easyMode) {
             markdown = 0.1;
             toughness = 0.25;
+        }
+        else if (cheatMode) {
+            markdown = 0;
+            toughness = 0;
         }
         else {
             markdown = 0.3;
