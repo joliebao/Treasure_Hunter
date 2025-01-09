@@ -4,9 +4,10 @@ public class Casino {
         private int bet;
         private int guess;
         private int number;
-        private Hunter hunter;
+        private final Hunter hunter;
 
-        public Casino(){
+        public Casino(Hunter h){
+            hunter = h;
             bet = 0;
             guess = 0;
             number = 0;
@@ -14,19 +15,21 @@ public class Casino {
 
         public void wager(){
             Scanner s = new Scanner(System.in);
-            System.out.println("How much do you want to wager? ");
+            System.out.print("How much do you want to wager? ");
             bet = Integer.parseInt(s.next());
 
-            if (bet > hunter.getGold()){
-                System.out.println("Do you really think you have that much?");
-            } else if (bet < 0){
-                System.out.println("We are NOT giving YOU gold.");
+            while (bet > hunter.getGold() || bet < 0){
+                System.out.println();
+                System.out.println("Do you really think you have that much gold?");
+                System.out.println();
+                System.out.print("How much do you want to wager? ");
+                bet = Integer.parseInt(s.next());
             }
         }
 
         public void gamble(){
             Scanner s = new Scanner(System.in);
-            System.out.println("Pick a number from 1-12: ");
+            System.out.print("Pick a number from 1-12: ");
             guess = Integer.parseInt(s.next());
 
             if (guess < 0 || guess > 12) {
@@ -34,11 +37,16 @@ public class Casino {
                 hunter.changeGold(0);
             } else {
                 number = 1 + ((int) Math.random() * 12);
-                if (guess > number + 2 || guess < number + 2){
-                    hunter.changeGold(0);
-                } else {
+                if (guess < number + 2 && guess > number + 2){
+                    System.out.println("The number was: " + number);
+                    System.out.println("Double the bet was returned");
                     hunter.changeGold(2 * bet + hunter.getGold());
+                } else {
+                    System.out.println("The number was: " + number);
+                    System.out.println("Hand us your gold.");
+                    hunter.changeGold(0);
                 }
+                System.out.println(hunter.getGold());
             }
         }
 }

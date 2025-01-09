@@ -235,6 +235,7 @@ public class TreasureHunter
             currentTown.setHasHunted();
 
         } else if (choice.equals("G")){ // gamble
+            casino = new Casino(hunter);
             casino.wager();
             casino.gamble();
 
