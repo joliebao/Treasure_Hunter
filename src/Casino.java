@@ -4,7 +4,7 @@ public class Casino {
         private int bet;
         private int guess;
         private int number;
-        private final Hunter hunter;
+        private Hunter hunter;
 
         public Casino(Hunter h){
             hunter = h;
@@ -40,13 +40,12 @@ public class Casino {
                 if (guess < number + 2 && guess > number + 2){
                     System.out.println("The number was: " + number);
                     System.out.println("Double the bet was returned");
-                    hunter.changeGold(2 * bet + hunter.getGold());
+                    hunter.changeGold(2 * bet);
                 } else {
                     System.out.println("The number was: " + number);
                     System.out.println("Hand us your gold.");
-                    hunter.changeGold(0);
+                    hunter.changeGold(-hunter.getGold());
                 }
-                System.out.println(hunter.getGold());
             }
         }
 }
