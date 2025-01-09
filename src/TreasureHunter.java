@@ -11,10 +11,11 @@ public class TreasureHunter
     //Instance variables
     private Town currentTown;
     private Hunter hunter;
+    private Treasure currentTreasure;
+    private Casino casino;
     private boolean hardMode;
     private boolean easyMode;
     private static boolean cheatMode;
-    private Treasure currentTreasure;
 
     //Constructor
     /**
@@ -144,6 +145,7 @@ public class TreasureHunter
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
             System.out.println("(H)unt for treasure!");
+            System.out.println("(G)amble!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -172,11 +174,11 @@ public class TreasureHunter
      */
     private void processChoice(String choice)
     {
-        if (choice.equals("B") || choice.equals("b") || choice.equals("S") || choice.equals("s"))
+        if (choice.equals("B") || choice.equals("S")) // buying or selling
         {
             currentTown.enterShop(choice);
         }
-        else if (choice.equals("M") || choice.equals("m"))
+        else if (choice.equals("M")) // moving
         {
             if (currentTown.leaveTown())
             {
@@ -185,18 +187,13 @@ public class TreasureHunter
                 enterTown();
             }
         }
-        else if (choice.equals("L") || choice.equals("l"))
-        {
+        else if (choice.equals("L")) { // fighting
             currentTown.lookForTrouble();
-        }
-        else if (choice.equals("X") || choice.equals("x"))
-        {
-            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
 
-        }else if(choice.equals("H")|| choice.equals("h")){
+        } else if(choice.equals("H")){ // hunting
             System.out.println();
-            if (!currentTown.getHasHunted()) {
 
+            if (!currentTown.getHasHunted()) {
                 System.out.println("You hunted for treasure and found....");
                 System.out.println(currentTreasure);
 
@@ -212,36 +209,39 @@ public class TreasureHunter
                     System.out.println("You already got a Crystal Skull, so you donated it to a museum...");
                 }
 
-
                 if (Treasure.hasAllThreeTreasures()) {
                     System.out.println("You got all the treasures!");
                     System.out.println("Congratulations, you're rich now!");
-
                 }
 
                 if (currentTreasure.getCurrentTreasure().equals("Sapphire Ring")) {
                         currentTreasure.gotTreasure1();
 //                        hunter.addTreasureToKit("Sapphire Ring");
                     }
+
                 if (currentTreasure.getCurrentTreasure().equals("Jade Necklace")) {
                     currentTreasure.gotTreasure2();
 //                    hunter.addTreasureToKit("Jade Necklace");
-
                 }
+
                 if (currentTreasure.getCurrentTreasure().equals("Crystal Skull")) {
                     currentTreasure.gotTreasure3();
 //                    hunter.addTreasureToKit("Crystal Skull");
-
                 }
 
-
-            }else {
+            } else {
                 System.out.println("You already hunted here, try another town!");
             }
             currentTown.setHasHunted();
-        }
-        else
-        {
+
+        } else if (choice.equals("G")){ // gamble
+            casino.wager();
+            casino.gamble();
+
+        } else if (choice.equals("X")) { // exiting
+            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+
+        } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
     }
