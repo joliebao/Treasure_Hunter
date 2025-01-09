@@ -146,7 +146,7 @@ public class Hunter
             int endOfItem = kit.indexOf(KIT_DELIMITER, placeholder);
             String tmpItem = kit.substring(placeholder, endOfItem);
             placeholder = endOfItem + 1;
-            if (tmpItem.equals(item))
+            if (tmpItem.equalsIgnoreCase(item))
             {
                 // early return
                 return true;
@@ -175,10 +175,10 @@ public class Hunter
         return printableKit;
     }
 
-    public void addTreasureToKit(String treasure){
-
-       addItem("a "+ treasure);
-    }
+//    public void addTreasureToKit(String treasure){
+//
+//       addItem("a "+ treasure);
+//    }
     /**
      * @return A string representation of the hunter.
      */

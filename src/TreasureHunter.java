@@ -100,6 +100,7 @@ public class TreasureHunter
             toughness = 0.5;
         }
 
+
         currentTreasure.generateTreasure();
 
         // note that we don't need to access the Shop object
@@ -116,6 +117,8 @@ public class TreasureHunter
         // as a parameter; note this also could have been done in the
         // constructor for Town, but this illustrates another way to associate
         // an object with an object of a different class
+
+        System.out.println("_________________________________________");
         currentTown.hunterArrives(hunter);
     }
 
@@ -159,6 +162,7 @@ public class TreasureHunter
             System.out.println();
             System.out.println(hunter.getHunterName() + " has " + hunter.getGold() + " gold.");
             System.out.println("You win! You found all three treasures " + hunter.getHunterName() + "!");
+
         }
     }
 
@@ -190,6 +194,7 @@ public class TreasureHunter
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
 
         }else if(choice.equals("H")|| choice.equals("h")){
+            System.out.println();
             if (!currentTown.getHasHunted()) {
 
                 System.out.println("You hunted for treasure and found....");
@@ -216,16 +221,16 @@ public class TreasureHunter
 
                 if (currentTreasure.getCurrentTreasure().equals("Sapphire Ring")) {
                         currentTreasure.gotTreasure1();
-                        hunter.addTreasureToKit("Sapphire Ring");
+//                        hunter.addTreasureToKit("Sapphire Ring");
                     }
                 if (currentTreasure.getCurrentTreasure().equals("Jade Necklace")) {
                     currentTreasure.gotTreasure2();
-                    hunter.addTreasureToKit("Jade Necklace");
+//                    hunter.addTreasureToKit("Jade Necklace");
 
                 }
                 if (currentTreasure.getCurrentTreasure().equals("Crystal Skull")) {
                     currentTreasure.gotTreasure3();
-                    hunter.addTreasureToKit("Crystal Skull");
+//                    hunter.addTreasureToKit("Crystal Skull");
 
                 }
 
