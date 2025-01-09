@@ -175,6 +175,10 @@ public class Hunter
         return printableKit;
     }
 
+    public void addTreasureToKit(String treasure){
+
+       addItem("a "+ treasure);
+    }
     /**
      * @return A string representation of the hunter.
      */

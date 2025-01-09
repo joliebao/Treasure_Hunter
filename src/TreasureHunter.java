@@ -79,7 +79,6 @@ public class TreasureHunter
      */
     private void enterTown()
     {
-        Treasure treasure = new Treasure();
         double markdown = 0.25;
         double toughness = 0.4;
         if (hardMode) {
@@ -137,7 +136,6 @@ public class TreasureHunter
             System.out.println("***");
             System.out.println(hunter);
             System.out.println(currentTown);
-            System.out.println(currentTreasure);
             System.out.println("(B)uy something at the shop.");
             System.out.println("(S)ell something at the shop.");
             System.out.println("(M)ove on to a different town.");
@@ -193,6 +191,7 @@ public class TreasureHunter
 
         }else if(choice.equals("H")|| choice.equals("h")){
             if (!currentTown.getHasHunted()) {
+
                 System.out.println("You hunted for treasure and found....");
                 System.out.println(currentTreasure);
 
@@ -208,27 +207,27 @@ public class TreasureHunter
                     System.out.println("You already got a Crystal Skull, so you donated it to a museum...");
                 }
 
+
                 if (Treasure.hasAllThreeTreasures()) {
                     System.out.println("You got all the treasures!");
                     System.out.println("Congratulations, you're rich now!");
 
                 }
 
-
                 if (currentTreasure.getCurrentTreasure().equals("Sapphire Ring")) {
                         currentTreasure.gotTreasure1();
+                        hunter.addTreasureToKit("Sapphire Ring");
                     }
-
                 if (currentTreasure.getCurrentTreasure().equals("Jade Necklace")) {
-
                     currentTreasure.gotTreasure2();
-                    }
+                    hunter.addTreasureToKit("Jade Necklace");
 
+                }
                 if (currentTreasure.getCurrentTreasure().equals("Crystal Skull")) {
-
                     currentTreasure.gotTreasure3();
-                    }
+                    hunter.addTreasureToKit("Crystal Skull");
 
+                }
 
 
             }else {

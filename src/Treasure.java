@@ -6,6 +6,8 @@ public class Treasure {
     private String currentTreasure;
     private double treasureChance;
     private TreasureHunter game;
+
+
     public Treasure(){ // constructor method that sets all variables to their starting values.
         treasure1 =false;
         treasure2 =false;
@@ -41,15 +43,15 @@ public class Treasure {
     }
 
     public void gotTreasure1() {
-        this.treasure1 = true;
+        treasure1 = true;
     }
 
     public void gotTreasure2() {
-        this.treasure2 = true;
+        treasure2 = true;
     }
 
     public void gotTreasure3() {
-        this.treasure3 = true;
+        treasure3 = true;
     }
 
     public static boolean isTreasure1() {
@@ -65,10 +67,7 @@ public class Treasure {
     }
 
     public static boolean hasAllThreeTreasures(){
-        if (treasure1 && treasure2 && treasure3){
-            return true;
-        }
-        return false;
+        return treasure1 && treasure2 && treasure3;
     }
 
     public String toString(){
