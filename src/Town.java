@@ -49,6 +49,10 @@ public class Town
         return printMessage;
     }
 
+    public boolean getToughTown(){
+        return toughTown;
+    }
+
     /**
      * Assigns an object to the Hunter in town.
      * @param h The arriving Hunter.

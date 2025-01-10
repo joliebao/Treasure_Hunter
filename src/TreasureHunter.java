@@ -89,15 +89,15 @@ public class TreasureHunter
             toughness = 0.75;
         }
         else if (easyMode) {
-            markdown = 0.1;
+            markdown = 0.9;
             toughness = 0.25;
         }
         else if (cheatMode) {
-            markdown = 0;
+            markdown = 1;
             toughness = 0;
         }
         else {
-            markdown = 0.3;
+            markdown = 0.7;
             toughness = 0.5;
         }
 
@@ -189,11 +189,11 @@ public class TreasureHunter
         }
         else if (choice.equals("L")) { // fighting
             currentTown.lookForTrouble();
-
         } else if(choice.equals("H")){ // hunting
             System.out.println();
 
             if (!currentTown.getHasHunted()) {
+
                 System.out.println("You hunted for treasure and found....");
                 System.out.println(currentTreasure);
 
@@ -216,17 +216,14 @@ public class TreasureHunter
 
                 if (currentTreasure.getCurrentTreasure().equals("Sapphire Ring")) {
                         currentTreasure.gotTreasure1();
-//                        hunter.addTreasureToKit("Sapphire Ring");
                     }
 
                 if (currentTreasure.getCurrentTreasure().equals("Jade Necklace")) {
                     currentTreasure.gotTreasure2();
-//                    hunter.addTreasureToKit("Jade Necklace");
                 }
 
                 if (currentTreasure.getCurrentTreasure().equals("Crystal Skull")) {
                     currentTreasure.gotTreasure3();
-//                    hunter.addTreasureToKit("Crystal Skull");
                 }
 
             } else {

@@ -2,7 +2,6 @@ public class Treasure {
     private static boolean treasure1;
     private static boolean treasure2;
     private static boolean treasure3;
-    private int counter;
     private String currentTreasure;
     private double treasureChance;
     private TreasureHunter game;
@@ -12,7 +11,6 @@ public class Treasure {
         treasure1 =false;
         treasure2 =false;
         treasure3 =false;
-        counter = 0;
         treasureChance=Math.random();
 
         if (game.isCheatMode() == true){
